@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEMBAGA BIMBINGAN BELAJAR</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bimbelBlue: {
+                            DEFAULT: '#0066FF',
+                            light: '#3385FF',
+                            dark: '#004DE6',
+                            50: '#E6F0FF'
+                        },
+                        bimbelOrange: {
+                            DEFAULT: '#FF6B00',
+                            light: '#FF8A33',
+                            dark: '#E05D00',
+                            50: '#FFF2E6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-pattern {
+            background-color: #0066FF;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-bimbelOrange selection:text-white">
+
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo & Brand Name -->
+            <div class="flex items-center space-x-3">
+                <div id="brandLogoContainer" class="w-12 h-12 rounded-xl bg-bimbelBlue-50 flex items-center justify-center overflow-hidden border-2 border-bimbelBlue shadow-inner">
+                    <img id="brandLogoImg" src="https://placehold.co/100x100/0066FF/ffffff?text=BIMBEL" alt="Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/0066FF/ffffff?text=Logo'">
+                </div>
+                <div>
+                    <span id="brandTitleText" class="text-xl sm:text-2xl font-black tracking-tight text-bimbelBlue uppercase">LEMBAGA BIMBINGAN BELAJAR</span>
+                    <p class="text-xs font-medium text-gray-500">Pusat Prestasi & Sukses Ujian</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex items-center space-x-1 font-semibold text-sm text-gray-600">
+                <a href="#beranda" class="px-3 py-2 rounded-lg hover:text-bimbelBlue hover:bg-bimbelBlue-50 transition">Beranda</a>
+                <a href="#harga" class="px-3 py-2 rounded-lg hover:text-bimbelBlue hover:bg-bimbelBlue-50 transition">Harga & Program</a>
+                <a href="#testimony" class="px-3 py-2 rounded-lg hover:text-bimbelBlue hover:bg-bimbelBlue-50 transition">Testimony</a>
+                <a href="#event" class="px-3 py-2 rounded-lg hover:text-bimbelBlue hover:bg-bimbelBlue-50 transition">Event & Ujian</a>
+                <a href="#faq" class="px-3 py-2 rounded-lg hover:text-bimbelBlue hover:bg-bimbelBlue-50 transition">FAQ</a>
+                <a href="#galeri" class="px-3 py-2 rounded-lg hover:text-bimbelBlue hover:bg-bimbelBlue-50 transition">Galeri</a>
+                <a href="#kontak" class="px-3 py-2 rounded-lg hover:text-bimbelBlue hover:bg-bimbelBlue-50 transition">Kontak</a>
+            </nav>
+
+            <!-- Admin Mode Action & Mobile Toggle -->
+            <div class="flex items-center space-x-3">
+                <button onclick="handleAdminAccess()" class="flex items-center space-x-2 bg-bimbelOrange hover:bg-bimbelOrange-dark text-white px-4 py-2.5 rounded-xl font-bold shadow-lg shadow-bimbelOrange/30 transition transform hover:-translate-y-0.5 active:translate-y-0 text-sm">
+                    <i class="fa-solid fa-lock text-xs"></i>
+                    <span id="adminToggleText">Mode Admin / Edit</span>
+                </button>
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-gray-600 hover:text-bimbelBlue hover:bg-gray-100 transition">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-1">
+            <a href="#beranda" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-700 hover:bg-bimbelBlue-50 hover:text-bimbelBlue">Beranda</a>
+            <a href="#harga" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-700 hover:bg-bimbelBlue-50 hover:text-bimbelBlue">Harga & Program</a>
+            <a href="#testimony" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-700 hover:bg-bimbelBlue-50 hover:text-bimbelBlue">Testimony</a>
+            <a href="#event" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-700 hover:bg-bimbelBlue-50 hover:text-bimbelBlue">Event & Ujian</a>
+            <a href="#faq" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-700 hover:bg-bimbelBlue-50 hover:text-bimbelBlue">FAQ</a>
+            <a href="#galeri" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-700 hover:bg-bimbelBlue-50 hover:text-bimbelBlue">Galeri</a>
+            <a href="#kontak" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-700 hover:bg-bimbelBlue-50 hover:text-bimbelBlue">Kontak</a>
+        </div>
+    </header>
+
+    <section id="beranda" class="hero-pattern text-white py-20 lg:py-28 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-center lg:text-left">
+                    <span class="inline-flex items-center gap-2 bg-bimbelOrange text-white text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
+                        <i class="fa-solid fa-award"></i> Bimbel Terbaik & Terpercaya #1
+                    </span>
+                    <h1 id="heroTitle" class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        Wujudkan Impian Masuk PTN & Sekolah Favorit Bersama Kami
+                    </h1>
+                    <p id="heroSubtitle" class="text-base sm:text-lg text-blue-100 max-w-xl mx-auto lg:mx-0">
+                        Bimbingan belajar profesional dengan metode belajar modern, pengajar berpengalaman dari universitas terkemuka, dan modul terlengkap untuk SD, SMP, SMA, TKA, hingga SNBT.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#harga" class="w-full sm:w-auto bg-bimbelOrange hover:bg-bimbelOrange-dark text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-bimbelOrange/40 transition transform hover:-translate-y-1 text-center">
+                            <i class="fa-solid fa-rocket mr-2"></i> Lihat Program & Harga
+                        </a>
+                        <a href="#kontak" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 border-2 border-white/30 text-white font-bold px-8 py-3.5 rounded-xl transition text-center backdrop-blur-sm">
+                            <i class="fa-solid fa-phone mr-2"></i> Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+                <div class="relative flex justify-center">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-bimbelOrange to-yellow-400 rounded-3xl blur-lg opacity-30 animate-pulse"></div>
+                    <div class="relative w-full max-w-md bg-white rounded-3xl p-3 shadow-2xl overflow-hidden border-4 border-white/20">
+                        <img id="heroImage" src="https://placehold.co/600x400/3385FF/ffffff?text=Siswa+Bimbel+Aktif" alt="Hero Illustration" class="w-full h-72 sm:h-80 object-cover rounded-2xl" onerror="this.src='https://placehold.co/600x400/3385FF/ffffff?text=Siswa+Bimbel'">
+                        <div class="p-4 bg-white rounded-b-2xl flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-bimbelOrange-50 text-bimbelOrange flex items-center justify-center font-bold text-lg">
+                                    <i class="fa-solid fa-user-graduate"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm">98% Lulus PTN & Favorit</h4>
+                                    <p class="text-xs text-gray-500">Telah teruji sejak 2015</p>
+                                </div>
+                            </div>
+                            <span class="bg-bimbelBlue-50 text-bimbelBlue font-bold text-xs px-3 py-1.5 rounded-lg">Terakreditasi A</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Wave Divider -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-12 sm:h-20 text-gray-50 preserve-3d">
+                <path d="M0,32L60,42.7C120,53,240,75,360,80C480,85,600,75,720,64C840,53,960,43,1080,48C1200,53,1320,75,1380,85.3L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="harga" class="py-20 bg-gray-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="bg-bimbelBlue-50 text-bimbelBlue font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-wider">Pilihan Program Unggulan</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">Program Bimbel & Harga Terbaik</h2>
+                <p class="text-gray-600 text-base sm:text-lg">Pilih jenjang pendidikan yang sesuai dan raih prestasi gemilang bersama pengajar terbaik kami.</p>
+            </div>
+
+            <!-- Program Cards Grid -->
+            <div id="pricingContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="testimony" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="bg-bimbelOrange-50 text-bimbelOrange font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-wider">Testimoni Alumni</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">Apa Kata Mereka Yang Telah Berhasil?</h2>
+                <p class="text-gray-600 text-base sm:text-lg">Cerita sukses siswa-siswi kami yang berhasil menembus PTN impian dan sekolah favorit.</p>
+            </div>
+
+            <!-- Testimony Grid -->
+            <div id="testimonyContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="event" class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="bg-bimbelBlue-50 text-bimbelBlue font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-wider">Jadwal & Latihan</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">Event, Kelas ZOOM & Latihan Ujian</h2>
+                <p class="text-gray-600 text-base sm:text-lg">Akses link kelas online ZOOM interaktif serta bank soal latihan ujian dari Google Drive dengan mudah.</p>
+            </div>
+
+            <!-- Event Grid -->
+            <div id="eventContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 space-y-4">
+                <span class="bg-bimbelOrange-50 text-bimbelOrange font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-wider">Pertanyaan Umum</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">Frequently Asked Questions (FAQ)</h2>
+                <p class="text-gray-600 text-base">Temukan jawaban atas pertanyaan seputar pendaftaran, fasilitas, dan metode belajar di Lembaga Bimbel kami.</p>
+            </div>
+
+            <div id="faqContainer" class="space-y-4">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="galeri" class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="bg-bimbelBlue-50 text-bimbelBlue font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-wider">Dokumentasi</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">Galeri Kegiatan Belajar</h2>
+                <p class="text-gray-600 text-base sm:text-lg">Suasana kelas yang kondusif, interaktif, dan penuh semangat prestasi di lembaga kami.</p>
+            </div>
+
+            <div id="galleryContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="bg-bimbelOrange-50 text-bimbelOrange font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-wider">Hubungi Kami</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">Lokasi & Kontak Bimbel</h2>
+                <p class="text-gray-600 text-base sm:text-lg">Kunjungi kantor pusat kami atau hubungi kontak layanan pelanggan untuk informasi selengkapnya.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <!-- Contact Details & Form -->
+                <div class="bg-gray-50 rounded-3xl p-8 border border-gray-200 shadow-sm space-y-6">
+                    <h3 class="text-2xl font-bold text-gray-900">Informasi Kontak</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-bimbelBlue-50 text-bimbelBlue flex items-center justify-center shrink-0 font-bold text-lg">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Alamat Kantor Pusat</h4>
+                                <p id="contactAddressText" class="text-gray-600 text-sm mt-1">Jl. Pendidikan Raya No. 45, Komplek Kampus Merdeka, Jakarta Selatan</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-bimbelOrange-50 text-bimbelOrange flex items-center justify-center shrink-0 font-bold text-lg">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Telepon / WhatsApp</h4>
+                                <p id="contactPhoneText" class="text-gray-600 text-sm mt-1">+62 812-3456-7890 (Admin Bimbel)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-bimbelBlue-50 text-bimbelBlue flex items-center justify-center shrink-0 font-bold text-lg">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Email Resmi</h4>
+                                <p id="contactEmailText" class="text-gray-600 text-sm mt-1">info@lembagabimbel.sch.id</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-200">
+                        <h4 class="font-bold text-gray-800 mb-3">Kirim Pesan Langsung</h4>
+                        <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div>
+                                <input type="text" id="senderName" required placeholder="Nama Lengkap" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-bimbelBlue text-sm">
+                            </div>
+                            <div>
+                                <input type="email" id="senderEmail" required placeholder="Alamat Email" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-bimbelBlue text-sm">
+                            </div>
+                            <div>
+                                <textarea id="senderMessage" required rows="3" placeholder="Tulis pesan atau pertanyaan Anda..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-bimbelBlue text-sm"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-bimbelBlue hover:bg-bimbelBlue-dark text-white font-bold py-3 px-6 rounded-xl shadow-lg transition text-sm">
+                                <i class="fa-solid fa-paper-plane mr-2"></i> Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Peta Section (Google Maps Embed) -->
+                <div class="space-y-6">
+                    <div class="bg-gray-50 rounded-3xl p-4 border border-gray-200 shadow-sm">
+                        <div class="rounded-2xl overflow-hidden h-[450px] bg-gray-200 relative">
+                            <iframe id="mapIframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2997787056637!2d106.824964!3d-6.2293867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnNDUuOCJTIDEwNsKwNDknMjkuOSJF!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-4 md:col-span-2">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-bimbelBlue flex items-center justify-center font-bold text-white text-xl">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span id="footerBrandName" class="text-xl font-black uppercase text-white tracking-wider">LEMBAGA BIMBINGAN BELAJAR</span>
+                    </div>
+                    <p class="text-gray-400 text-sm max-w-sm">
+                        Lembaga bimbingan belajar terdepan yang mendampingi siswa meraih prestasi akademik terbaik, masuk PTN favorit, dan mencetak generasi unggul.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4 uppercase text-xs tracking-wider text-bimbelOrange">Tautan Cepat</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#beranda" class="hover:text-white transition">Beranda</a></li>
+                        <li><a href="#harga" class="hover:text-white transition">Program & Harga</a></li>
+                        <li><a href="#testimony" class="hover:text-white transition">Testimoni</a></li>
+                        <li><a href="#event" class="hover:text-white transition">Event & Ujian</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4 uppercase text-xs tracking-wider text-bimbelOrange">Dukungan</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#kontak" class="hover:text-white transition">Hubungi Kami</a></li>
+                        <li><a href="#galeri" class="hover:text-white transition">Galeri Foto</a></li>
+                        <li><a href="#" onclick="handleAdminAccess(); return false;" class="text-bimbelOrange hover:underline">Admin Mode</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+                &copy; <span id="currentYear">2026</span> LEMBAGA BIMBINGAN BELAJAR. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative transform transition-all">
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="mb-6">
+                <span class="bg-bimbelOrange-50 text-bimbelOrange text-xs font-bold px-3 py-1 rounded-full">Pendaftaran Online</span>
+                <h3 id="modalProgramTitle" class="text-2xl font-black text-gray-900 mt-2">Daftar Program Bimbel</h3>
+                <p id="modalProgramPrice" class="text-bimbelBlue font-bold text-lg mt-1">Rp 500.000 / Bulan</p>
+            </div>
+            <form onsubmit="submitRegistration(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Lengkap Siswa</label>
+                    <input type="text" id="regName" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-bimbelBlue text-sm">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nomor WhatsApp / HP</label>
+                        <input type="tel" id="regPhone" required placeholder="08123456789" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-bimbelBlue text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Asal Sekolah / Kelas</label>
+                        <input type="text" id="regSchool" required placeholder="SMA Negeri 1 Jakarta" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-bimbelBlue text-sm">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Catatan Tambahan (Opsional)</label>
+                    <textarea id="regNotes" rows="2" placeholder="Pilihan jadwal atau pertanyaan..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-bimbelBlue text-sm"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-bimbelOrange hover:bg-bimbelOrange-dark text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-bimbelOrange/30 transition text-sm">
+                    <i class="fa-solid fa-check-circle mr-2"></i> Konfirmasi Pendaftaran Sekarang
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Password Verification Modal -->
+    <div id="adminLoginModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative transform transition-all">
+            <button onclick="closeAdminLoginModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 rounded-2xl bg-bimbelOrange-50 text-bimbelOrange flex items-center justify-center text-2xl mx-auto mb-3 shadow-inner">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="text-2xl font-black text-gray-900">Autentikasi Admin</h3>
+                <p class="text-xs text-gray-500 mt-1">Masukkan kata sandi admin untuk mengakses panel editor website.</p>
+            </div>
+            <form onsubmit="verifyAdminPassword(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Password Admin</label>
+                    <div class="relative">
+                        <input type="password" id="adminPasswordInput" required placeholder="Masukkan password (default: admin123)" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-bimbelOrange text-sm pr-10">
+                        <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600">
+                            <i id="eyeIcon" class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <p id="loginErrorMsg" class="text-xs text-red-500 hidden font-semibold">Password salah! Silakan coba lagi.</p>
+                <button type="submit" class="w-full bg-bimbelOrange hover:bg-bimbelOrange-dark text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-bimbelOrange/30 transition text-sm">
+                    <i class="fa-solid fa-right-to-bracket mr-2"></i> Masuk Panel Admin
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-gray-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 border border-gray-700">
+        <div id="toastIcon" class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <h4 id="toastTitle" class="font-bold text-sm">Berhasil</h4>
+            <p id="toastMessage" class="text-xs text-gray-300">Data berhasil diperbarui.</p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Modal -->
+    <div id="adminModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-2 sm:p-6 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden relative">
+            <!-- Modal Header -->
+            <div class="bg-gray-900 text-white px-6 py-4 flex items-center justify-between border-b border-gray-800 shrink-0">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-bimbelOrange flex items-center justify-center text-white font-bold">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">Panel Admin / Editor Website Bimbel</h3>
+                        <p class="text-xs text-gray-400">Ubah teks, upload foto logo, program harga, testimoni, event, galeri, peta & password admin</p>
+                    </div>
+                </div>
+                <button onclick="toggleAdminModal()" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Tab Navigation for Admin -->
+            <div class="bg-gray-100 px-6 py-3 flex space-x-2 overflow-x-auto shrink-0 border-b border-gray-200">
+                <button onclick="switchAdminTab('generalTab')" id="btnGeneralTab" class="admin-tab-btn px-4 py-2 rounded-xl font-bold text-sm bg-bimbelBlue text-white shadow transition shrink-0">Umum & Beranda</button>
+                <button onclick="switchAdminTab('pricingTab')" id="btnPricingTab" class="admin-tab-btn px-4 py-2 rounded-xl font-bold text-sm bg-white text-gray-600 hover:bg-gray-200 transition shrink-0">Program & Harga</button>
+                <button onclick="switchAdminTab('testimonyTab')" id="btnTestimonyTab" class="admin-tab-btn px-4 py-2 rounded-xl font-bold text-sm bg-white text-gray-600 hover:bg-gray-200 transition shrink-0">Testimony</button>
+                <button onclick="switchAdminTab('eventTab')" id="btnEventTab" class="admin-tab-btn px-4 py-2 rounded-xl font-bold text-sm bg-white text-gray-600 hover:bg-gray-200 transition shrink-0">Event & Zoom</button>
+                <button onclick="switchAdminTab('faqTab')" id="btnFaqTab" class="admin-tab-btn px-4 py-2 rounded-xl font-bold text-sm bg-white text-gray-600 hover:bg-gray-200 transition shrink-0">FAQ</button>
+                <button onclick="switchAdminTab('galleryTab')" id="btnGalleryTab" class="admin-tab-btn px-4 py-2 rounded-xl font-bold text-sm bg-white text-gray-600 hover:bg-gray-200 transition shrink-0">Galeri Foto</button>
+                <button onclick="switchAdminTab('mapTab')" id="btnMapTab" class="admin-tab-btn px-4 py-2 rounded-xl font-bold text-sm bg-white text-gray-600 hover:bg-gray-200 transition shrink-0">Kontak & Keamanan</button>
+            </div>
+
+            <!-- Modal Body Content (Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-6 flex-grow bg-gray-50">
+                
+                <!-- TAB 1: Umum & Beranda -->
+                <div id="generalTab" class="admin-tab-content space-y-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                        <h4 class="font-bold text-gray-900 border-b pb-2">Identitas & Logo Lembaga</h4>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Lembaga</label>
+                            <input type="text" id="adminBrandName" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-bimbelBlue">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Upload Logo Lembaga / Foto</label>
+                            <input type="file" id="adminLogoInput" accept="image/*" onchange="handleImageUpload(event, 'logo')" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-bimbelBlue-50 file:text-bimbelBlue hover:file:bg-bimbelBlue-100">
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                        <h4 class="font-bold text-gray-900 border-b pb-2">Beranda (Banner Utama)</h4>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Judul Utama (Hero Title)</label>
+                            <textarea id="adminHeroTitle" rows="2" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-bimbelBlue"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Sub-Judul (Hero Subtitle)</label>
+                            <textarea id="adminHeroSubtitle" rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-bimbelBlue"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Upload Foto / Ilustrasi Beranda</label>
+                            <input type="file" id="adminHeroImgInput" accept="image/*" onchange="handleImageUpload(event, 'hero')" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-bimbelBlue-50 file:text-bimbelBlue hover:file:bg-bimbelBlue-100">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Program & Harga -->
+                <div id="pricingTab" class="admin-tab-content space-y-6 hidden">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-gray-900 text-lg">Kelola Program Bimbel & Harga</h4>
+                        <button onclick="addPricingItem()" class="bg-bimbelBlue hover:bg-bimbelBlue-dark text-white px-4 py-2 rounded-xl text-sm font-bold shadow transition">
+                            <i class="fa-solid fa-plus mr-1"></i> Tambah Program
+                        </button>
+                    </div>
+                    <div id="adminPricingList" class="space-y-4">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- TAB 3: Testimony -->
+                <div id="testimonyTab" class="admin-tab-content space-y-6 hidden">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-gray-900 text-lg">Kelola Testimoni Siswa</h4>
+                        <button onclick="addTestimonyItem()" class="bg-bimbelBlue hover:bg-bimbelBlue-dark text-white px-4 py-2 rounded-xl text-sm font-bold shadow transition">
+                            <i class="fa-solid fa-plus mr-1"></i> Tambah Testimoni
+                        </button>
+                    </div>
+                    <div id="adminTestimonyList" class="space-y-4">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- TAB 4: Event & Zoom -->
+                <div id="eventTab" class="admin-tab-content space-y-6 hidden">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-gray-900 text-lg">Kelola Event, ZOOM & Latihan Ujian</h4>
+                        <button onclick="addEventItem()" class="bg-bimbelBlue hover:bg-bimbelBlue-dark text-white px-4 py-2 rounded-xl text-sm font-bold shadow transition">
+                            <i class="fa-solid fa-plus mr-1"></i> Tambah Event
+                        </button>
+                    </div>
+                    <div id="adminEventList" class="space-y-4">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- TAB 5: FAQ -->
+                <div id="faqTab" class="admin-tab-content space-y-6 hidden">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-gray-900 text-lg">Kelola FAQ (Pertanyaan Umum)</h4>
+                        <button onclick="addFaqItem()" class="bg-bimbelBlue hover:bg-bimbelBlue-dark text-white px-4 py-2 rounded-xl text-sm font-bold shadow transition">
+                            <i class="fa-solid fa-plus mr-1"></i> Tambah Pertanyaan
+                        </button>
+                    </div>
+                    <div id="adminFaqList" class="space-y-4">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- TAB 6: Galeri Foto -->
+                <div id="galleryTab" class="admin-tab-content space-y-6 hidden">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-gray-900 text-lg">Kelola Galeri Dokumentasi Foto</h4>
+                        <button onclick="addGalleryItem()" class="bg-bimbelBlue hover:bg-bimbelBlue-dark text-white px-4 py-2 rounded-xl text-sm font-bold shadow transition">
+                            <i class="fa-solid fa-plus mr-1"></i> Tambah Foto Galeri
+                        </button>
+                    </div>
+                    <div id="adminGalleryList" class="space-y-4">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- TAB 7: Kontak & Keamanan (Password Admin) -->
+                <div id="mapTab" class="admin-tab-content space-y-6 hidden">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                        <h4 class="font-bold text-gray-900 border-b pb-2">Informasi Kontak & Alamat</h4>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Alamat Kantor</label>
+                            <input type="text" id="adminContactAddress" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-bimbelBlue">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nomor Telepon / WhatsApp</label>
+                            <input type="text" id="adminContactPhone" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-bimbelBlue">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Email Resmi</label>
+                            <input type="email" id="adminContactEmail" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-bimbelBlue">
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                        <h4 class="font-bold text-gray-900 border-b pb-2">Keamanan & Password Admin</h4>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Ganti Password Admin Baru</label>
+                            <input type="text" id="adminNewPassword" placeholder="Kosongkan jika tidak ingin mengubah password" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-bimbelOrange">
+                            <p class="text-xs text-gray-500 mt-1">Password default saat ini: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-bimbelOrange font-bold">admin123</code></p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                        <h4 class="font-bold text-gray-900 border-b pb-2">Embed Google Maps (Link / Iframe)</h4>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Link Embed Google Maps (URL `src` atau iframe HTML)</label>
+                            <textarea id="adminMapEmbed" rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-bimbelBlue" placeholder="https://www.google.com/maps/embed?pb=..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-gray-100 px-6 py-4 flex items-center justify-between border-t border-gray-200 shrink-0">
+                <button onclick="resetDefaultData()" class="text-red-600 hover:text-red-700 text-xs font-bold px-4 py-2 rounded-xl bg-red-50 hover:bg-red-100 transition">
+                    <i class="fa-solid fa-rotate-right mr-1"></i> Reset Data Default
+                </button>
+                <div class="flex space-x-3">
+                    <button onclick="toggleAdminModal()" class="px-5 py-2.5 rounded-xl border border-gray-300 text-gray-700 font-bold text-sm bg-white hover:bg-gray-50 transition">Batal</button>
+                    <button onclick="saveAdminData()" class="px-6 py-2.5 rounded-xl bg-bimbelOrange hover:bg-bimbelOrange-dark text-white font-bold text-sm shadow-lg shadow-bimbelOrange/30 transition">
+                        <i class="fa-solid fa-floppy-disk mr-2"></i> Simpan Perubahan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const defaultData = {
+            brandName: "LEMBAGA BIMBINGAN BELAJAR",
+            adminPassword: "admin123",
+            logoUrl: "https://placehold.co/100x100/0066FF/ffffff?text=BIMBEL",
+            heroTitle: "Wujudkan Impian Masuk PTN & Sekolah Favorit Bersama Kami",
+            heroSubtitle: "Bimbingan belajar profesional dengan metode belajar modern, pengajar berpengalaman dari universitas terkemuka, dan modul terlengkap untuk SD, SMP, SMA, TKA, hingga SNBT.",
+            heroImg: "https://placehold.co/600x400/3385FF/ffffff?text=Siswa+Bimbel+Aktif",
+            contactAddress: "Jl. Pendidikan Raya No. 45, Komplek Kampus Merdeka, Jakarta Selatan",
+            contactPhone: "+62 812-3456-7890 (Admin Bimbel)",
+            contactEmail: "info@lembagabimbel.sch.id",
+            mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2997787056637!2d106.824964!3d-6.2293867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnNDUuOCJTIDEwNsKwNDknMjkuOSJF!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid",
+            pricing: [
+                { id: 1, title: "Program Bimbel SD", price: "Rp 350.000", period: "/ bulan", desc: "Fokus peningkatan prestasi sekolah dasar, calistung, matematika dasar, dan sains menyenangkan.", badge: "Populer", icon: "fa-child-reaching" },
+                { id: 2, title: "Program Bimbel SMP", price: "Rp 450.000", period: "/ bulan", desc: "Persiapan matang menghadapi ujian sekolah, asesmen nasional, dan masuk SMA/SMK Favorit.", badge: "Favorit", icon: "fa-book-open-reader" },
+                { id: 3, title: "Program Bimbel SMA", price: "Rp 600.000", period: "/ bulan", desc: "Pendalaman materi Saintek & Soshum, persiapan nilai rapor semester dan ujian sekolah.", badge: "Unggulan", icon: "fa-graduation-cap" },
+                { id: 4, title: "Program TKA (Tes Kemampuan Akademik)", price: "Rp 750.000", period: "/ paket", desc: "Pelatihan intensif khusus TKA untuk menguasai penalaran analitis, verbal, dan kuantitatif.", badge: "Khusus", icon: "fa-brain" },
+                { id: 5, title: "Program SNBT / UTBK", price: "Rp 950.000", period: "/ program", desc: "Bimbingan super intensif UTBK SNBT dengan Tryout berkala, analisis skor IRT, dan strategi pilihjurusan.", badge: "Best Seller", icon: "fa-medal" }
+            ],
+            testimony: [
+                { id: 1, name: "Andi Pratama", role: "Lulus Kedokteran UI (SNBT)", text: "Berkat bimbingan intensif dan tryout rutin di sini, saya berhasil lolos di Fakultas Kedokteran Universitas Indonesia impian saya!", photo: "https://placehold.co/150x150/0066FF/ffffff?text=Andi" },
+                { id: 2, name: "Siti Rahmawati", role: "Lulus SMAN 1 Jakarta", text: "Pengajarnya sangat sabar dan materinya mudah dipahami. Nilai raport saya naik drastis dan diterima di SMA favorit!", photo: "https://placehold.co/150x150/FF6B00/ffffff?text=Siti" },
+                { id: 3, name: "Rizky Ramadhan", role: "Lulus Teknik Informatika ITB", text: "Modul soal SNBT sangat mirip dengan ujian aslinya. Strategi cepat mengerjakan soal sangat membantu saat UTBK.", photo: "https://placehold.co/150x150/3385FF/ffffff?text=Rizky" }
+            ],
+            event: [
+                { id: 1, title: "Kelas Interaktif via ZOOM: Bedah Soal SNBT Penalaran Umum", date: "Setiap Sabtu, 10.00 - 12.00 WIB", desc: "Sesi live bersama Master Tutor membahas trik cepat menjawab soal penalaran bernilai bobot tinggi.", zoomLink: "https://zoom.us/j/examplezoomlink", type: "zoom" },
+                { id: 2, title: "Simulasi Latihan Ujian Akbar (Tryout SNBT & TKA)", date: "Setiap Minggu, 08.00 - selesai", desc: "Ujian berbasis komputer dengan sistem penilaian IRT akurat sesuai standar UTBK nasional.", driveLink: "https://drive.google.com/drive/folders/exampledrive", type: "drive" }
+            ],
+            faq: [
+                { q: "Bagaimana sistem belajar di Lembaga Bimbel ini?", a: "Kami menyediakan kelas tatap muka dan online interaktif dengan rasio siswa terbatas agar perhatian pengajar lebih maksimal." },
+                { q: "Apakah ada fasilitas Tryout berkala?", a: "Ya! Setiap minggu siswa akan mengikuti tryout dengan sistem penilaian IRT yang dilengkapi dengan analisis kelemahan materi." },
+                { q: "Bagaimana cara mendaftar program bimbel?", a: "Anda dapat menekan tombol daftar pada program yang diinginkan atau menghubungi admin kami via WhatsApp." }
+            ],
+            gallery: [
+                { title: "Suasana Belajar Kelas Interaktif", img: "https://placehold.co/500x350/0066FF/ffffff?text=Kelas+Belajar" },
+                { title: "Diskusi Kelompok & Bedah Soal", img: "https://placehold.co/500x350/FF6B00/ffffff?text=Diskusi+Siswa" },
+                { title: "Sesi Motivasi & Tips Masuk PTN", img: "https://placehold.co/500x350/3385FF/ffffff?text=Motivasi+PTN" },
+                { title: "Penyerahan Penghargaan Siswa Berprestasi", img: "https://placehold.co/500x350/004DE6/ffffff?text=Prestasi" }
+            ]
+        };
+
+        let bimbelData = JSON.parse(localStorage.getItem('bimbelData')) || defaultData;
+        if (!bimbelData.adminPassword) {
+            bimbelData.adminPassword = "admin123";
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderWebsite();
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+
+        function renderWebsite() {
+            // Brand & Hero
+            document.getElementById('brandTitleText').textContent = bimbelData.brandName;
+            document.getElementById('footerBrandName').textContent = bimbelData.brandName;
+            document.getElementById('brandLogoImg').src = bimbelData.logoUrl;
+            document.getElementById('heroTitle').textContent = bimbelData.heroTitle;
+            document.getElementById('heroSubtitle').textContent = bimbelData.heroSubtitle;
+            document.getElementById('heroImage').src = bimbelData.heroImg;
+
+            // Contact & Map
+            document.getElementById('contactAddressText').textContent = bimbelData.contactAddress;
+            document.getElementById('contactPhoneText').textContent = bimbelData.contactPhone;
+            document.getElementById('contactEmailText').textContent = bimbelData.contactEmail;
+            
+            let mapSrc = bimbelData.mapEmbed;
+            if (mapSrc.includes('<iframe')) {
+                const srcMatch = mapSrc.match(/src="([^"]+)"/);
+                if (srcMatch) mapSrc = srcMatch[1];
+            }
+            document.getElementById('mapIframe').src = mapSrc;
+
+            // Pricing
+            const pricingContainer = document.getElementById('pricingContainer');
+            pricingContainer.innerHTML = bimbelData.pricing.map(item => `
+                <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 flex flex-col justify-between relative transform hover:-translate-y-1 transition duration-300">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-12 h-12 rounded-2xl bg-bimbelBlue-50 text-bimbelBlue flex items-center justify-center font-bold text-xl">
+                                <i class="fa-solid ${item.icon || 'fa-graduation-cap'}"></i>
+                            </span>
+                            <span class="bg-bimbelOrange-50 text-bimbelOrange font-bold text-xs px-3 py-1.5 rounded-full">${item.badge}</span>
+                        </div>
+                        <h3 class="text-xl font-black text-gray-900 mb-2">${item.title}</h3>
+                        <p class="text-gray-600 text-sm mb-6">${item.desc}</p>
+                    </div>
+                    <div>
+                        <div class="mb-6 pb-6 border-t border-gray-100 flex items-baseline">
+                            <span class="text-2xl sm:text-3xl font-black text-bimbelBlue">${item.price}</span>
+                            <span class="text-xs text-gray-500 ml-1 font-semibold">${item.period}</span>
+                        </div>
+                        <button onclick="openRegisterModal('${item.title}', '${item.price} ${item.period}')" class="w-full bg-bimbelBlue hover:bg-bimbelBlue-dark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-bimbelBlue/30 transition text-sm flex items-center justify-center space-x-2">
+                            <span>Daftar Program Ini</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Testimony
+            const testimonyContainer = document.getElementById('testimonyContainer');
+            testimonyContainer.innerHTML = bimbelData.testimony.map(item => `
+                <div class="bg-gray-50 rounded-3xl p-8 border border-gray-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-yellow-400 mb-4 space-x-1 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm italic mb-6">"${item.text}"</p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-gray-200">
+                        <img src="${item.photo}" alt="${item.name}" class="w-12 h-12 rounded-full object-cover border-2 border-bimbelBlue" onerror="this.src='https://placehold.co/150x150/0066FF/ffffff?text=User'">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">${item.name}</h4>
+                            <p class="text-xs text-bimbelOrange font-semibold">${item.role}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Event
+            const eventContainer = document.getElementById('eventContainer');
+            eventContainer.innerHTML = bimbelData.event.map(item => `
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-200 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-bimbelBlue-50 text-bimbelBlue font-bold text-xs px-3 py-1.5 rounded-lg">
+                                <i class="fa-regular fa-calendar mr-1.5"></i> ${item.date}
+                            </span>
+                            <span class="bg-bimbelOrange-50 text-bimbelOrange font-bold text-xs px-3 py-1.5 rounded-lg uppercase">${item.zoomLink ? 'ZOOM Online' : 'Google Drive'}</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">${item.title}</h3>
+                        <p class="text-gray-600 text-sm">${item.desc}</p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-gray-100 flex items-center space-x-3">
+                        ${item.zoomLink ? `
+                            <a href="${item.zoomLink}" target="_blank" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-center text-sm shadow transition flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-video"></i>
+                                <span>Buka Link ZOOM</span>
+                            </a>
+                        ` : ''}
+                        ${item.driveLink ? `
+                            <a href="${item.driveLink}" target="_blank" class="flex-1 bg-bimbelOrange hover:bg-bimbelOrange-dark text-white font-bold py-3 px-4 rounded-xl text-center text-sm shadow transition flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-folder-open"></i>
+                                <span>Download Bank Soal</span>
+                            </a>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            // FAQ
+            const faqContainer = document.getElementById('faqContainer');
+            faqContainer.innerHTML = bimbelData.faq.map((item, idx) => `
+                <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(${idx})" class="w-full px-6 py-4 text-left font-bold text-gray-900 flex items-center justify-between hover:bg-gray-100 transition">
+                        <span>${item.q}</span>
+                        <i id="faqIcon-${idx}" class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                    </button>
+                    <div id="faqAns-${idx}" class="hidden px-6 pb-4 text-gray-600 text-sm border-t border-gray-200 pt-3">
+                        ${item.a}
+                    </div>
+                </div>
+            `).join('');
+
+            // Gallery
+            const galleryContainer = document.getElementById('galleryContainer');
+            galleryContainer.innerHTML = bimbelData.gallery.map(item => `
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/500x350/0066FF/ffffff?text=Dokumentasi'">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-gray-900 text-sm">${item.title}</h4>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleFaq(idx) {
+            const ans = document.getElementById(`faqAns-${idx}`);
+            const icon = document.getElementById(`faqIcon-${idx}`);
+            ans.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function openRegisterModal(title, price) {
+            document.getElementById('modalProgramTitle').textContent = `Daftar: ${title}`;
+            document.getElementById('modalProgramPrice').textContent = price;
+            document.getElementById('registerModal').classList.remove('hidden');
+            document.getElementById('registerModal').classList.add('flex');
+        }
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+            document.getElementById('registerModal').classList.remove('flex');
+        }
+        function submitRegistration(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            showToast('Pendaftaran Berhasil!', `Halo ${name}, data pendaftaran Anda telah tercatat. Tim admin kami akan segera menghubungi.`);
+            closeRegisterModal();
+            e.target.reset();
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Pesan Terkirim!', 'Terima kasih, pesan Anda telah berhasil dikirim ke Admin Bimbel.');
+            e.target.reset();
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById('notificationToast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+
+        // Admin Password Verification Flow
+        function handleAdminAccess() {
+            const loginModal = document.getElementById('adminLoginModal');
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('loginErrorMsg').classList.add('hidden');
+            loginModal.classList.remove('hidden');
+            loginModal.classList.add('flex');
+        }
+
+        function closeAdminLoginModal() {
+            const loginModal = document.getElementById('adminLoginModal');
+            loginModal.classList.add('hidden');
+            loginModal.classList.remove('flex');
+        }
+
+        function togglePasswordVisibility() {
+            const passInput = document.getElementById('adminPasswordInput');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+
+        function verifyAdminPassword(e) {
+            e.preventDefault();
+            const enteredPass = document.getElementById('adminPasswordInput').value;
+            const correctPass = bimbelData.adminPassword || 'admin123';
+
+            if (enteredPass === correctPass) {
+                closeAdminLoginModal();
+                showToast('Login Berhasil', 'Selamat datang di Panel Admin Lembaga Bimbel.');
+                toggleAdminModal();
+            } else {
+                document.getElementById('loginErrorMsg').classList.remove('hidden');
+            }
+        }
+
+        function toggleAdminModal() {
+            const modal = document.getElementById('adminModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                populateAdminFields();
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function switchAdminTab(tabId) {
+            document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-bimbelBlue', 'text-white', 'shadow');
+                btn.classList.add('bg-white', 'text-gray-600', 'hover:bg-gray-200');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn' + tabId.charAt(0).toUpperCase() + tabId.slice(1));
+            activeBtn.classList.remove('bg-white', 'text-gray-600', 'hover:bg-gray-200');
+            activeBtn.classList.add('bg-bimbelBlue', 'text-white', 'shadow');
+        }
+
+        function populateAdminFields() {
+            document.getElementById('adminBrandName').value = bimbelData.brandName;
+            document.getElementById('adminHeroTitle').value = bimbelData.heroTitle;
+            document.getElementById('adminHeroSubtitle').value = bimbelData.heroSubtitle;
+            document.getElementById('adminContactAddress').value = bimbelData.contactAddress;
+            document.getElementById('adminContactPhone').value = bimbelData.contactPhone;
+            document.getElementById('adminContactEmail').value = bimbelData.contactEmail;
+            document.getElementById('adminMapEmbed').value = bimbelData.mapEmbed;
+            document.getElementById('adminNewPassword').value = '';
+
+            renderAdminPricingList();
+            renderAdminTestimonyList();
+            renderAdminEventList();
+            renderAdminFaqList();
+            renderAdminGalleryList();
+        }
+
+        function handleImageUpload(event, targetType) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (targetType === 'logo') {
+                        bimbelData.logoUrl = e.target.result;
+                        document.getElementById('brandLogoImg').src = e.target.result;
+                        showToast('Logo Diperbarui', 'Logo lembaga berhasil diupload.');
+                    } else if (targetType === 'hero') {
+                        bimbelData.heroImg = e.target.result;
+                        document.getElementById('heroImage').src = e.target.result;
+                        showToast('Foto Beranda Diperbarui', 'Ilustrasi beranda berhasil diupload.');
+                    }
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function renderAdminPricingList() {
+            const container = document.getElementById('adminPricingList');
+            container.innerHTML = bimbelData.pricing.map((item, index) => `
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 space-y-3 relative shadow-sm">
+                    <button onclick="removePricingItem(${index})" class="absolute top-4 right-4 text-red-500 hover:text-red-700 text-sm font-bold"><i class="fa-solid fa-trash"></i> Hapus</button>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" value="${item.title}" onchange="bimbelData.pricing[${index}].title = this.value" placeholder="Judul Program" class="px-3 py-2 rounded-xl border text-sm">
+                        <div class="flex space-x-2">
+                            <input type="text" value="${item.price}" onchange="bimbelData.pricing[${index}].price = this.value" placeholder="Harga" class="w-2/3 px-3 py-2 rounded-xl border text-sm">
+                            <input type="text" value="${item.period}" onchange="bimbelData.pricing[${index}].period = this.value" placeholder="Periode" class="w-1/3 px-3 py-2 rounded-xl border text-sm">
+                        </div>
+                    </div>
+                    <textarea onchange="bimbelData.pricing[${index}].desc = this.value" rows="2" class="w-full px-3 py-2 rounded-xl border text-sm" placeholder="Deskripsi">${item.desc}</textarea>
+                </div>
+            `).join('');
+        }
+        function addPricingItem() {
+            bimbelData.pricing.push({ id: Date.now(), title: "Program Baru", price: "Rp 500.000", period: "/ bulan", desc: "Deskripsi program baru...", badge: "Baru", icon: "fa-graduation-cap" });
+            renderAdminPricingList();
+        }
+        function removePricingItem(index) {
+            bimbelData.pricing.splice(index, 1);
+            renderAdminPricingList();
+        }
+
+        function renderAdminTestimonyList() {
+            const container = document.getElementById('adminTestimonyList');
+            container.innerHTML = bimbelData.testimony.map((item, index) => `
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 space-y-3 relative shadow-sm">
+                    <button onclick="removeTestimonyItem(${index})" class="absolute top-4 right-4 text-red-500 hover:text-red-700 text-sm font-bold"><i class="fa-solid fa-trash"></i> Hapus</button>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" value="${item.name}" onchange="bimbelData.testimony[${index}].name = this.value" placeholder="Nama Siswa" class="px-3 py-2 rounded-xl border text-sm">
+                        <input type="text" value="${item.role}" onchange="bimbelData.testimony[${index}].role = this.value" placeholder="Keterangan / Kelulusan" class="px-3 py-2 rounded-xl border text-sm">
+                    </div>
+                    <textarea onchange="bimbelData.testimony[${index}].text = this.value" rows="2" class="w-full px-3 py-2 rounded-xl border text-sm" placeholder="Testimoni">${item.text}</textarea>
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1">Upload Foto Siswa</label>
+                        <input type="file" accept="image/*" onchange="handleSubImageUpload(event, 'testimony', ${index})" class="text-xs">
+                    </div>
+                </div>
+            `).join('');
+        }
+        function addTestimonyItem() {
+            bimbelData.testimony.push({ id: Date.now(), name: "Nama Siswa", role: "Lulus PTN", text: "Testimoni sukses...", photo: "https://placehold.co/150x150/0066FF/ffffff?text=User" });
+            renderAdminTestimonyList();
+        }
+        function removeTestimonyItem(index) {
+            bimbelData.testimony.splice(index, 1);
+            renderAdminTestimonyList();
+        }
+
+        function renderAdminEventList() {
+            const container = document.getElementById('adminEventList');
+            container.innerHTML = bimbelData.event.map((item, index) => `
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 space-y-3 relative shadow-sm">
+                    <button onclick="removeEventItem(${index})" class="absolute top-4 right-4 text-red-500 hover:text-red-700 text-sm font-bold"><i class="fa-solid fa-trash"></i> Hapus</button>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" value="${item.title}" onchange="bimbelData.event[${index}].title = this.value" placeholder="Judul Event" class="px-3 py-2 rounded-xl border text-sm">
+                        <input type="text" value="${item.date}" onchange="bimbelData.event[${index}].date = this.value" placeholder="Jadwal (Contoh: Sabtu, 10.00)" class="px-3 py-2 rounded-xl border text-sm">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" value="${item.zoomLink || ''}" onchange="bimbelData.event[${index}].zoomLink = this.value" placeholder="Link ZOOM" class="px-3 py-2 rounded-xl border text-sm">
+                        <input type="text" value="${item.driveLink || ''}" onchange="bimbelData.event[${index}].driveLink = this.value" placeholder="Link Google Drive" class="px-3 py-2 rounded-xl border text-sm">
+                    </div>
+                    <textarea onchange="bimbelData.event[${index}].desc = this.value" rows="2" class="w-full px-3 py-2 rounded-xl border text-sm" placeholder="Deskripsi Event">${item.desc}</textarea>
+                </div>
+            `).join('');
+        }
+        function addEventItem() {
+            bimbelData.event.push({ id: Date.now(), title: "Event Baru", date: "Segera", desc: "Deskripsi event...", zoomLink: "", driveLink: "", type: "zoom" });
+            renderAdminEventList();
+        }
+        function removeEventItem(index) {
+            bimbelData.event.splice(index, 1);
+            renderAdminEventList();
+        }
+
+        function renderAdminFaqList() {
+            const container = document.getElementById('adminFaqList');
+            container.innerHTML = bimbelData.faq.map((item, index) => `
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 space-y-3 relative shadow-sm">
+                    <button onclick="removeFaqItem(${index})" class="absolute top-4 right-4 text-red-500 hover:text-red-700 text-sm font-bold"><i class="fa-solid fa-trash"></i> Hapus</button>
+                    <input type="text" value="${item.q}" onchange="bimbelData.faq[${index}].q = this.value" placeholder="Pertanyaan (FAQ)" class="w-full px-3 py-2 rounded-xl border text-sm font-bold">
+                    <textarea onchange="bimbelData.faq[${index}].a = this.value" rows="2" class="w-full px-3 py-2 rounded-xl border text-sm" placeholder="Jawaban">${item.a}</textarea>
+                </div>
+            `).join('');
+        }
+        function addFaqItem() {
+            bimbelData.faq.push({ q: "Pertanyaan baru?", a: "Jawaban pertanyaan..." });
+            renderAdminFaqList();
+        }
+        function removeFaqItem(index) {
+            bimbelData.faq.splice(index, 1);
+            renderAdminFaqList();
+        }
+
+        function renderAdminGalleryList() {
+            const container = document.getElementById('adminGalleryList');
+            container.innerHTML = bimbelData.gallery.map((item, index) => `
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 space-y-3 relative shadow-sm flex items-center space-x-4">
+                    <img src="${item.img}" class="w-16 h-16 rounded-xl object-cover shrink-0 border" onerror="this.src='https://placehold.co/100x100/0066FF/ffffff?text=Foto'">
+                    <div class="flex-grow space-y-2">
+                        <input type="text" value="${item.title}" onchange="bimbelData.gallery[${index}].title = this.value" placeholder="Keterangan Foto" class="w-full px-3 py-2 rounded-xl border text-sm">
+                        <input type="file" accept="image/*" onchange="handleSubImageUpload(event, 'gallery', ${index})" class="text-xs">
+                    </div>
+                    <button onclick="removeGalleryItem(${index})" class="text-red-500 hover:text-red-700 text-sm font-bold px-2"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+        function addGalleryItem() {
+            bimbelData.gallery.push({ title: "Dokumentasi Baru", img: "https://placehold.co/500x350/0066FF/ffffff?text=Foto+Baru" });
+            renderAdminGalleryList();
+        }
+        function removeGalleryItem(index) {
+            bimbelData.gallery.splice(index, 1);
+            renderAdminGalleryList();
+        }
+
+        function handleSubImageUpload(event, type, index) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (type === 'testimony') {
+                        bimbelData.testimony[index].photo = e.target.result;
+                        showToast('Foto Testimoni Diperbarui', 'Foto siswa berhasil diupload.');
+                    } else if (type === 'gallery') {
+                        bimbelData.gallery[index].img = e.target.result;
+                        showToast('Foto Galeri Diperbarui', 'Dokumentasi foto berhasil diupload.');
+                    }
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function saveAdminData() {
+            bimbelData.brandName = document.getElementById('adminBrandName').value;
+            bimbelData.heroTitle = document.getElementById('adminHeroTitle').value;
+            bimbelData.heroSubtitle = document.getElementById('adminHeroSubtitle').value;
+            bimbelData.contactAddress = document.getElementById('adminContactAddress').value;
+            bimbelData.contactPhone = document.getElementById('adminContactPhone').value;
+            bimbelData.contactEmail = document.getElementById('adminContactEmail').value;
+            bimbelData.mapEmbed = document.getElementById('adminMapEmbed').value;
+
+            const newPass = document.getElementById('adminNewPassword').value.trim();
+            if (newPass !== "") {
+                bimbelData.adminPassword = newPass;
+                showToast('Password Diperbarui', 'Password admin berhasil diubah.');
+            }
+
+            localStorage.setItem('bimbelData', JSON.stringify(bimbelData));
+            renderWebsite();
+            toggleAdminModal();
+            showToast('Berhasil Disimpan!', 'Semua perubahan pada website Bimbel telah diperbarui.');
+        }
+
+        function resetDefaultData() {
+            if (confirm('Apakah Anda yakin ingin mereset seluruh data ke pengaturan awal?')) {
+                localStorage.removeItem('bimbelData');
+                bimbelData = JSON.parse(JSON.stringify(defaultData));
+                renderWebsite();
+                toggleAdminModal();
+                showToast('Berhasil Direset', 'Website telah dikembalikan ke data awal.');
+            }
+        }
+    </script>
+</body>
+</html>
